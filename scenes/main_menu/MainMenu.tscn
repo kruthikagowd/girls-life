@@ -1,0 +1,321 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Theme" path="res://ui/themes/pastel_theme.tres" id="1_theme"]
+[ext_resource type="Script" path="res://scenes/main_menu/MainMenu.gd" id="2_script"]
+[ext_resource type="PackedScene" path="res://scenes/main_menu/AuthModal.tscn" id="3_auth_modal"]
+
+[sub_resource type="Gradient" id="Gradient_bg"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0.972549, 0.941176, 1, 0.968627, 0.886275, 0.913725, 1, 0.882353, 0.839216, 0.952941, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bg"]
+gradient = SubResource("Gradient_bg")
+fill_from = Vector2(0, 0)
+fill_to = Vector2(1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_theme")
+script = ExtResource("2_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_bg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 40
+
+[node name="MainLayout" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="LeftColumn" type="VBoxContainer" parent="MarginContainer/MainLayout"]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BadgeCard" type="PanelContainer" parent="MarginContainer/MainLayout/LeftColumn"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="BadgeText" type="Label" parent="MarginContainer/MainLayout/LeftColumn/BadgeCard"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.51, 0.28, 0.45, 1)
+theme_override_font_sizes/font_size = 11
+text = "✨ 3D FASHION-DOLL VIRTUAL LIFE"
+
+[node name="TitleBox" type="VBoxContainer" parent="MarginContainer/MainLayout/LeftColumn"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="GameTitle" type="Label" parent="MarginContainer/MainLayout/LeftColumn/TitleBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.22, 0.118, 0.196, 1)
+theme_override_colors/font_shadow_color = Color(0.969, 0.773, 0.824, 0.5)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 46
+text = "PROJECT HER"
+
+[node name="GameSubtitle" type="Label" parent="MarginContainer/MainLayout/LeftColumn/TitleBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48, 0.35, 0.44, 1)
+theme_override_font_sizes/font_size = 14
+text = "Create your doll. Build your world. Live your story."
+
+[node name="NavSpacer" type="Control" parent="MarginContainer/MainLayout/LeftColumn"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="NavButtons" type="VBoxContainer" parent="MarginContainer/MainLayout/LeftColumn"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PlayButton" type="Button" parent="MarginContainer/MainLayout/LeftColumn/NavButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "▶  Enter World"
+
+[node name="SalonButton" type="Button" parent="MarginContainer/MainLayout/LeftColumn/NavButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 46)
+layout_mode = 2
+text = "👗  Character Salon"
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/MainLayout/LeftColumn/NavButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 46)
+layout_mode = 2
+text = "⚙  Settings"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/MainLayout/LeftColumn/NavButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 46)
+layout_mode = 2
+text = "✕  Exit Game"
+
+[node name="BottomSpacer" type="Control" parent="MarginContainer/MainLayout/LeftColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FooterLabel" type="Label" parent="MarginContainer/MainLayout/LeftColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.5, 0.58, 1)
+theme_override_font_sizes/font_size = 11
+text = "v0.1.0 • Phase 1A • Godot 4.7 GL Compatibility"
+
+[node name="RightColumn" type="CenterContainer" parent="MarginContainer/MainLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FeatureCard" type="PanelContainer" parent="MarginContainer/MainLayout/RightColumn"]
+custom_minimum_size = Vector2(420, 420)
+layout_mode = 2
+
+[node name="CardContent" type="VBoxContainer" parent="MarginContainer/MainLayout/RightColumn/FeatureCard"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CardHeader" type="Label" parent="MarginContainer/MainLayout/RightColumn/FeatureCard/CardContent"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "🌸 Welcome to the Doll Universe"
+horizontal_alignment = 1
+
+[node name="CardDescription" type="Label" parent="MarginContainer/MainLayout/RightColumn/FeatureCard/CardContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.42, 0.3, 0.38, 1)
+theme_override_font_sizes/font_size = 13
+text = "PROJECT HER is a virtual social world designed with a hybrid anime-realistic fashion aesthetic. Create your unique doll, customize your dream home, and make lifelong friends in a shared city."
+autowrap_mode = 3
+
+[node name="FeatureList" type="VBoxContainer" parent="MarginContainer/MainLayout/RightColumn/FeatureCard/CardContent"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Feat1" type="Label" parent="MarginContainer/MainLayout/RightColumn/FeatureCard/CardContent/FeatureList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "💄  Large Expressive Eyes & Glossy Lips"
+
+[node name="Feat2" type="Label" parent="MarginContainer/MainLayout/RightColumn/FeatureCard/CardContent/FeatureList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "👗  Hairstyles, Outfits & Fashion Accessories"
+
+[node name="Feat3" type="Label" parent="MarginContainer/MainLayout/RightColumn/FeatureCard/CardContent/FeatureList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "🏙️  Shared Multiplayer 3D City & Cafés"
+
+[node name="Feat4" type="Label" parent="MarginContainer/MainLayout/RightColumn/FeatureCard/CardContent/FeatureList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "🏡  Personal Apartments & Furniture Styling"
+
+[node name="Feat5" type="Label" parent="MarginContainer/MainLayout/RightColumn/FeatureCard/CardContent/FeatureList"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "💼  Fashion & Barista Careers with Virtual Economy"
+
+[node name="CardSpacer" type="Control" parent="MarginContainer/MainLayout/RightColumn/FeatureCard/CardContent"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StatusPill" type="PanelContainer" parent="MarginContainer/MainLayout/RightColumn/FeatureCard/CardContent"]
+layout_mode = 2
+
+[node name="PillText" type="Label" parent="MarginContainer/MainLayout/RightColumn/FeatureCard/CardContent/StatusPill"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.25, 0.4, 1)
+theme_override_font_sizes/font_size = 11
+text = "● Phase 1A Prototype: Click 'Enter World' to try Guest Mode"
+horizontal_alignment = 1
+
+[node name="AuthModal" parent="." instance=ExtResource("3_auth_modal")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="SalonModal" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="SalonModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18, 0.08, 0.16, 0.55)
+
+[node name="CenterContainer" type="CenterContainer" parent="SalonModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="PanelContainer" parent="SalonModal/CenterContainer"]
+custom_minimum_size = Vector2(420, 260)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="SalonModal/CenterContainer/Card"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="SalonModal/CenterContainer/Card/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "👗 Character Salon Preview"
+
+[node name="Description" type="Label" parent="SalonModal/CenterContainer/Card/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.42, 0.3, 0.38, 1)
+theme_override_font_sizes/font_size = 13
+text = "The Character Salon will be unlocked in Phase 2!\n\nYou will be able to customize your doll's facial structure, skin tones, eye shapes and colors, glossy lips, makeup styles, hairstyles, and layered fashion outfits."
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="SalonModal/CenterContainer/Card/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CloseSalonButton" type="Button" parent="SalonModal/CenterContainer/Card/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+text = "Back to Menu"
+
+[node name="SettingsModal" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="SettingsModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18, 0.08, 0.16, 0.55)
+
+[node name="CenterContainer" type="CenterContainer" parent="SettingsModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="PanelContainer" parent="SettingsModal/CenterContainer"]
+custom_minimum_size = Vector2(400, 260)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="SettingsModal/CenterContainer/Card"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="SettingsModal/CenterContainer/Card/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "⚙ Game Settings"
+
+[node name="VolLabel" type="Label" parent="SettingsModal/CenterContainer/Card/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Master Volume:"
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsModal/CenterContainer/Card/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 80.0
+
+[node name="FullscreenCheckbox" type="CheckBox" parent="SettingsModal/CenterContainer/Card/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = " Fullscreen Display"
+
+[node name="Spacer" type="Control" parent="SettingsModal/CenterContainer/Card/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CloseSettingsButton" type="Button" parent="SettingsModal/CenterContainer/Card/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+text = "Close Settings"

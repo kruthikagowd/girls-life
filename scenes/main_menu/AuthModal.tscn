@@ -1,0 +1,233 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Theme" path="res://ui/themes/pastel_theme.tres" id="1_theme"]
+[ext_resource type="Script" path="res://scenes/main_menu/AuthModal.gd" id="2_script"]
+
+[node name="AuthModal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_theme")
+script = ExtResource("2_script")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18, 0.08, 0.16, 0.55)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModalCard" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(480, 520)
+layout_mode = 2
+
+[node name="ContentBox" type="VBoxContainer" parent="CenterContainer/ModalCard"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HeaderBox" type="HBoxContainer" parent="CenterContainer/ModalCard/ContentBox"]
+layout_mode = 2
+
+[node name="TitleBox" type="VBoxContainer" parent="CenterContainer/ModalCard/ContentBox/HeaderBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/ModalCard/ContentBox/HeaderBox/TitleBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Enter PROJECT HER"
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/ModalCard/ContentBox/HeaderBox/TitleBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48, 0.35, 0.44, 1)
+theme_override_font_sizes/font_size = 12
+text = "Choose your path to enter the virtual world"
+
+[node name="CloseModalButton" type="Button" parent="CenterContainer/ModalCard/ContentBox/HeaderBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_vertical = 0
+text = "✕"
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/ModalCard/ContentBox"]
+layout_mode = 2
+
+[node name="TabsBox" type="HBoxContainer" parent="CenterContainer/ModalCard/ContentBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="GuestTabButton" type="Button" parent="CenterContainer/ModalCard/ContentBox/TabsBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "✨ Guest Mode"
+
+[node name="SignInTabButton" type="Button" parent="CenterContainer/ModalCard/ContentBox/TabsBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sign In"
+
+[node name="RegisterTabButton" type="Button" parent="CenterContainer/ModalCard/ContentBox/TabsBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Register"
+
+[node name="GuestView" type="VBoxContainer" parent="CenterContainer/ModalCard/ContentBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="InfoCard" type="PanelContainer" parent="CenterContainer/ModalCard/ContentBox/GuestView"]
+layout_mode = 2
+
+[node name="InfoText" type="Label" parent="CenterContainer/ModalCard/ContentBox/GuestView/InfoCard"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.38, 0.22, 0.35, 1)
+theme_override_font_sizes/font_size = 13
+text = "Welcome! Guest mode lets you jump straight into the 3D world. No password required."
+autowrap_mode = 3
+
+[node name="NamePromptLabel" type="Label" parent="CenterContainer/ModalCard/ContentBox/GuestView"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Doll Name:"
+
+[node name="GuestNameInput" type="LineEdit" parent="CenterContainer/ModalCard/ContentBox/GuestView"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "GuestDoll"
+placeholder_text = "Enter a name for your doll..."
+
+[node name="Spacer" type="Control" parent="CenterContainer/ModalCard/ContentBox/GuestView"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="EnterGuestButton" type="Button" parent="CenterContainer/ModalCard/ContentBox/GuestView"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+text = "✨ Enter World as Guest"
+
+[node name="SignInView" type="VBoxContainer" parent="CenterContainer/ModalCard/ContentBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="NoticeCard" type="PanelContainer" parent="CenterContainer/ModalCard/ContentBox/SignInView"]
+layout_mode = 2
+
+[node name="NoticeText" type="Label" parent="CenterContainer/ModalCard/ContentBox/SignInView/NoticeCard"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.25, 0.35, 1)
+theme_override_font_sizes/font_size = 12
+text = "ℹ️ Online servers are currently in offline prototype mode. Real database authentication connects in Phase 5."
+autowrap_mode = 3
+
+[node name="UserPromptLabel" type="Label" parent="CenterContainer/ModalCard/ContentBox/SignInView"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Username or Email:"
+
+[node name="SignInUserInput" type="LineEdit" parent="CenterContainer/ModalCard/ContentBox/SignInView"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "e.g. FashionQueen"
+
+[node name="PassPromptLabel" type="Label" parent="CenterContainer/ModalCard/ContentBox/SignInView"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Password (Mock):"
+
+[node name="SignInPasswordInput" type="LineEdit" parent="CenterContainer/ModalCard/ContentBox/SignInView"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "••••••••"
+secret = true
+
+[node name="SignInActionButton" type="Button" parent="CenterContainer/ModalCard/ContentBox/SignInView"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Sign In (Prototype Mode)"
+
+[node name="RegisterView" type="VBoxContainer" parent="CenterContainer/ModalCard/ContentBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="NoticeCard" type="PanelContainer" parent="CenterContainer/ModalCard/ContentBox/RegisterView"]
+layout_mode = 2
+
+[node name="NoticeText" type="Label" parent="CenterContainer/ModalCard/ContentBox/RegisterView/NoticeCard"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.25, 0.35, 1)
+theme_override_font_sizes/font_size = 12
+text = "ℹ️ Account creation prototype. No real passwords are collected or saved on disk."
+autowrap_mode = 3
+
+[node name="RegNamePromptLabel" type="Label" parent="CenterContainer/ModalCard/ContentBox/RegisterView"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Desired Doll Name:"
+
+[node name="RegisterUserInput" type="LineEdit" parent="CenterContainer/ModalCard/ContentBox/RegisterView"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "e.g. PrincessDaisy"
+
+[node name="RegEmailPromptLabel" type="Label" parent="CenterContainer/ModalCard/ContentBox/RegisterView"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Email Address:"
+
+[node name="RegisterEmailInput" type="LineEdit" parent="CenterContainer/ModalCard/ContentBox/RegisterView"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "you@example.com"
+
+[node name="RegPassPromptLabel" type="Label" parent="CenterContainer/ModalCard/ContentBox/RegisterView"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Create Password:"
+
+[node name="RegisterPasswordInput" type="LineEdit" parent="CenterContainer/ModalCard/ContentBox/RegisterView"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "••••••••"
+secret = true
+
+[node name="RegisterActionButton" type="Button" parent="CenterContainer/ModalCard/ContentBox/RegisterView"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Register Doll (Prototype Mode)"
+
+[node name="StatusLabel" type="Label" parent="CenterContainer/ModalCard/ContentBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
