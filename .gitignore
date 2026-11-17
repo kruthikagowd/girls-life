@@ -1,0 +1,15 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Node.js & Backend
+node_modules/
+server/dist/
+*.log
+.env
+.env.local
+
+# Operating System files
+Thumbs.db
+Desktop.ini
+.DS_Store
